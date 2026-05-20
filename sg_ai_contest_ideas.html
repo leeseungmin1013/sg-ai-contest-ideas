@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>서강 AI 서비스 공모전 아이디어 정리</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #5e687a;
+      --line: #d9deea;
+      --accent: #1f7a6d;
+      --accent-2: #b6465f;
+      --accent-3: #335c81;
+      --soft: #eaf5f2;
+      --soft-2: #fff1f3;
+      --soft-3: #edf3fa;
+      --shadow: 0 16px 40px rgba(23, 32, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 28px;
+      border-bottom: 1px solid rgba(217, 222, 234, 0.9);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 56px 28px 30px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(120deg, rgba(31, 122, 109, 0.16), rgba(255, 255, 255, 0.8)),
+        linear-gradient(0deg, #ffffff, #f5f7fb);
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 820px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .metric {
+      min-height: 104px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 24px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 28px 64px;
+    }
+
+    section {
+      margin-top: 34px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .section-title p {
+      max-width: 560px;
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(150px, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .portfolio a {
+      display: flex;
+      min-height: 118px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+    }
+
+    .portfolio b {
+      color: var(--accent-3);
+      font-size: 14px;
+    }
+
+    .portfolio span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .idea {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .idea-head {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #fbfcff);
+    }
+
+    .idea-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .idea h3 {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.25;
+    }
+
+    .tagline {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .idea-body {
+      padding: 20px;
+    }
+
+    h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: var(--accent);
+    }
+
+    ul {
+      margin: 0 0 18px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft-3);
+      color: var(--accent-3);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .diagram {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .flow {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: 1fr 38px 1fr 38px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .node {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      font-weight: 700;
+    }
+
+    .arrow {
+      color: var(--accent);
+      font-size: 28px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    th,
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #eef4f7;
+      color: var(--accent-3);
+    }
+
+    .recommend {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .rank {
+      min-height: 210px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .rank:first-child {
+      background: var(--soft);
+      border-color: rgba(31, 122, 109, 0.35);
+    }
+
+    .rank b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .rank p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      min-height: 180px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      background: var(--accent-2);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .checklist {
+      columns: 2;
+      column-gap: 28px;
+      padding: 20px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .checklist li {
+      break-inside: avoid;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .cards,
+      .diagram,
+      .recommend,
+      .roadmap {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-title {
+        display: block;
+      }
+
+      .section-title p {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 10px 16px;
+      }
+
+      .hero,
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .portfolio {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-row {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+
+      .checklist {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Sogang AI Contest Ideas</div>
+    <nav class="nav" aria-label="아이디어 이동">
+      <a href="#map">맵</a>
+      <a href="#ideas">7개 아이디어</a>
+      <a href="#recommend">추천</a>
+      <a href="#roadmap">로드맵</a>
+      <a href="#checklist">논의 체크리스트</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">서강대학교 AI 서비스 공모전 후보 정리</p>
+      <h1>흩어진 아이디어를 7개의 공모전형 콘셉트로 묶었습니다.</h1>
+      <p class="hero-copy">
+        학습 지원, 수강 설계, 규정 검색, 진로 멘토링, 캠퍼스 큐레이션, 평가·협업 혁신, 정책 시뮬레이션을
+        심사자가 이해하기 쉬운 문제-해결-차별화 구조로 정리했습니다.
+      </p>
+      <div class="hero-grid">
+        <div class="metric">
+          <strong>7개</strong>
+          <span>통합 아이디어 후보</span>
+        </div>
+        <div class="metric">
+          <strong>1순위</strong>
+          <span>소크라테스형 AI TA</span>
+        </div>
+        <div class="metric">
+          <strong>MVP 중심</strong>
+          <span>데모와 발표가 가능한 범위로 구체화</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="map">
+      <div class="section-title">
+        <h2>아이디어 포트폴리오 맵</h2>
+        <p>각 아이디어는 독립 제출도 가능하지만, 하나의 메인 아이디어를 고르고 나머지를 확장 로드맵으로 배치하면 발표 설득력이 좋아집니다.</p>
+      </div>
+      <div class="portfolio">
+        <a href="#idea1"><b>1. 소크라테스형 AI TA</b><span>정답 대신 질문과 힌트를 주는 학습 보조 에이전트</span></a>
+        <a href="#idea2"><b>2. Reading Pace AI</b><span>페이지 수가 아닌 이해 속도 기반 학습 매니저</span></a>
+        <a href="#idea3"><b>3. 수강·전공 설계</b><span>졸업요건, 시간표, 진로를 함께 보는 설계 에이전트</span></a>
+        <a href="#idea4"><b>4. 서강 규정 GPT</b><span>학칙·내규·장학·환불 규정 RAG 챗봇</span></a>
+        <a href="#idea5"><b>5. 내 취향 알바트로스</b><span>교내 행사와 기회를 개인화 추천하는 피드</span></a>
+        <a href="#idea6"><b>6. 커리어 멘토</b><span>역량 진단, 비교과, 선배, 모의면접 연결</span></a>
+        <a href="#idea7"><b>7. 평가·협업·정책 인사이트</b><span>AI 시대의 평가, 팀플, 행정 의사결정 보조</span></a>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>통합 구조 다이어그램</h2>
+        <p>학생 경험의 흐름으로 보면 학습, 설계, 정보 탐색, 성장, 평가·행정이 하나의 캠퍼스 AI 생태계로 이어집니다.</p>
+      </div>
+      <div class="diagram">
+        <div class="flow">
+          <h3>학생 관점 흐름</h3>
+          <div class="flow-row">
+            <div class="node">학습 중 막힘<br />AI TA·Reading Pace</div>
+            <div class="arrow">→</div>
+            <div class="node">학업 선택<br />수강·전공 설계</div>
+            <div class="arrow">→</div>
+            <div class="node">성장 기회<br />큐레이션·커리어 멘토</div>
+          </div>
+        </div>
+        <div class="flow">
+          <h3>학교 관점 가치</h3>
+          <ul>
+            <li>반복 질문과 행정 문의 감소</li>
+            <li>학생의 자기주도 학습과 AI 리터러시 강화</li>
+            <li>비교과·동문·강의 데이터 활용도 증가</li>
+            <li>AI 시대 평가 기준과 정책 의사결정 선도</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="ideas">
+      <div class="section-title">
+        <h2>7개 아이디어 상세</h2>
+        <p>각 카드는 발표 자료로 바로 옮길 수 있도록 한 줄 요약, 기능, MVP, 차별화 포인트 중심으로 구성했습니다.</p>
+      </div>
+      <div class="cards">
+        <article class="idea" id="idea1">
+          <div class="idea-head">
+            <span class="idea-num">1</span>
+            <h3>소크라테스형 AI TA</h3>
+            <p class="tagline">정답 코드를 대신 작성하지 않고, 학생이 오류 원인과 개념을 스스로 발견하도록 돕는 AI 조교.</p>
+          </div>
+          <div class="idea-body">
+            <h4>문제</h4>
+            <ul>
+              <li>밤늦게 과제 오류나 수식 이해에 막혀도 질문할 곳이 부족합니다.</li>
+              <li>일반 ChatGPT는 정답을 바로 제공해 학습 과정이 생략될 수 있습니다.</li>
+            </ul>
+            <h4>주요 기능</h4>
+            <ul>
+              <li>강의 계획서와 실습 가이드라인 기반 답변</li>
+              <li>오류 메시지 해석, 개념 확인, 의심 코드 위치 안내</li>
+              <li>실패 횟수에 따라 점진적으로 구체화되는 힌트</li>
+              <li>익명화된 공통 오류 리포트 제공</li>
+            </ul>
+            <h4>MVP</h4>
+            <ul>
+              <li>Python 기초 과목 1개 대상</li>
+              <li>코드, 오류 메시지, 과제 설명 입력</li>
+              <li>단계형 힌트와 개념 질문 출력</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">학습 지원</span>
+              <span class="pill">AI 리터러시</span>
+              <span class="pill">최우선 후보</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="idea" id="idea2">
+          <div class="idea-head">
+            <span class="idea-num">2</span>
+            <h3>Reading Pace AI</h3>
+            <p class="tagline">페이지 수가 아니라 학생의 사전지식과 이해 속도에 맞춰 학습 계획을 재조정하는 매니저.</p>
+          </div>
+          <div class="idea-body">
+            <h4>문제</h4>
+            <ul>
+              <li>같은 10쪽이라도 학생마다 필요한 시간과 난이도가 다릅니다.</li>
+              <li>기존 플래너는 일정은 관리하지만 이해도를 반영하지 못합니다.</li>
+            </ul>
+            <h4>주요 기능</h4>
+            <ul>
+              <li>사전지식 진단 퀴즈</li>
+              <li>비선형 독서 플랜 생성</li>
+              <li>1분 이해도 체크와 페이스 재조정</li>
+              <li>시험기간 회피 행동에 대한 공감형 코칭</li>
+            </ul>
+            <h4>MVP</h4>
+            <ul>
+              <li>PDF 교재 또는 강의노트 업로드</li>
+              <li>3일·7일·14일 학습 계획 생성</li>
+              <li>이해도 퀴즈 기반 다음 계획 수정</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">적응형 학습</span>
+              <span class="pill">예습·복습</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="idea" id="idea3">
+          <div class="idea-head">
+            <span class="idea-num">3</span>
+            <h3>실시간 수강·전공 설계 에이전트</h3>
+            <p class="tagline">졸업요건, 자기설계전공, 시간표, 선수과목, 진로 목표를 함께 고려해 학기 전략을 제안합니다.</p>
+          </div>
+          <div class="idea-body">
+            <h4>문제</h4>
+            <ul>
+              <li>수강신청은 졸업요건, 시간표 충돌, 경쟁률, 진로를 동시에 고려해야 하는 퍼즐입니다.</li>
+              <li>정보가 여러 시스템과 문서, 선배 조언에 흩어져 있습니다.</li>
+            </ul>
+            <h4>주요 기능</h4>
+            <ul>
+              <li>졸업요건 자동 점검</li>
+              <li>희망 강의와 공강 선호를 반영한 시간표 조합</li>
+              <li>자기설계전공 플래너</li>
+              <li>대체 과목과 수강신청 플랜 B 제공</li>
+              <li>우연성 추천 기능인 수강신청 타로</li>
+            </ul>
+            <h4>MVP</h4>
+            <ul>
+              <li>특정 전공 1~2개부터 시작</li>
+              <li>이수 과목 수동 입력</li>
+              <li>시간표 후보 3개와 졸업요건 리포트 제공</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">수강신청</span>
+              <span class="pill">자기설계전공</span>
+              <span class="pill">학생 체감도 높음</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="idea" id="idea4">
+          <div class="idea-head">
+            <span class="idea-num">4</span>
+            <h3>서강 규정 GPT</h3>
+            <p class="tagline">학칙, 내규, 장학, 등록금 환불, 휴복학 규정을 조항·페이지 근거와 함께 답하는 RAG 챗봇.</p>
+          </div>
+          <div class="idea-body">
+            <h4>문제</h4>
+            <ul>
+              <li>규정 문서가 여러 PDF와 웹페이지에 흩어져 있습니다.</li>
+              <li>학생과 행정 직원 모두 케이스별 근거 조항을 찾는 데 시간이 걸립니다.</li>
+            </ul>
+            <h4>주요 기능</h4>
+            <ul>
+              <li>학사·장학·환불·휴복학 규정 통합 인덱싱</li>
+              <li>문서명, 조항, 페이지, 링크 인용</li>
+              <li>학생용 쉬운 설명과 직원용 처리 근거 모드</li>
+              <li>담당 부서 확인 필요 플래그</li>
+            </ul>
+            <h4>MVP</h4>
+            <ul>
+              <li>휴학, 복학, 장학, 등록금 환불 4개 영역</li>
+              <li>PDF 업로드 기반 RAG</li>
+              <li>답변 출처 표시 필수</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">행정 효율</span>
+              <span class="pill">RAG</span>
+              <span class="pill">근거 인용</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="idea" id="idea5">
+          <div class="idea-head">
+            <span class="idea-num">5</span>
+            <h3>내 취향 알바트로스</h3>
+            <p class="tagline">동아리, 세미나, 비교과, 장학, 공모전, 채용 설명회를 학생 관심사에 맞춰 추천하는 피드.</p>
+          </div>
+          <div class="idea-body">
+            <h4>문제</h4>
+            <ul>
+              <li>유용한 공지가 많지만 채널이 흩어져 있어 놓치기 쉽습니다.</li>
+              <li>주최자는 홍보 효율이 낮고, 학생은 자신에게 맞는 기회를 찾기 어렵습니다.</li>
+            </ul>
+            <h4>주요 기능</h4>
+            <ul>
+              <li>공지 자동 수집·정규화</li>
+              <li>관심사와 전공 기반 추천</li>
+              <li>세미나, 동아리, 장학, 공모전, 연구실 분류</li>
+              <li>학제간 연구자·멘토 매칭 확장</li>
+            </ul>
+            <h4>MVP</h4>
+            <ul>
+              <li>학교 공식 공지와 학과 공지 일부 수집</li>
+              <li>관심 키워드 5개 기반 추천</li>
+              <li>주간 개인화 뉴스레터 생성</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">캠퍼스 정보</span>
+              <span class="pill">개인화 피드</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="idea" id="idea6">
+          <div class="idea-head">
+            <span class="idea-num">6</span>
+            <h3>알바트로스 커리어 멘토</h3>
+            <p class="tagline">이력서, GitHub, 관심 직무, 성향을 분석해 부족 역량과 교내 자원, 선배 사례를 연결합니다.</p>
+          </div>
+          <div class="idea-body">
+            <h4>문제</h4>
+            <ul>
+              <li>학생은 어떤 역량을 더 준비해야 하는지 알기 어렵습니다.</li>
+              <li>비슷한 출발점의 선배 사례는 유용하지만 접근성이 낮습니다.</li>
+            </ul>
+            <h4>주요 기능</h4>
+            <ul>
+              <li>이력서, GitHub, 수강 과목 기반 역량 진단</li>
+              <li>비교과, 강의, 연구실, 공모전 추천</li>
+              <li>유사 선배 진로 사례 제시</li>
+              <li>직무별 모의 면접과 Future Self 코칭</li>
+            </ul>
+            <h4>MVP</h4>
+            <ul>
+              <li>학생 프로필 수동 입력</li>
+              <li>이력서 텍스트 분석</li>
+              <li>직무별 역량 체크리스트와 비교과 매칭</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">진로</span>
+              <span class="pill">동문 연결</span>
+              <span class="pill">모의면접</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="idea" id="idea7">
+          <div class="idea-head">
+            <span class="idea-num">7</span>
+            <h3>AI 시대 평가·협업·정책 인사이트</h3>
+            <p class="tagline">팀플, 보고서, 강의 이해도, 학사 정책을 데이터 기반으로 진단하는 교수자·행정용 플랫폼.</p>
+          </div>
+          <div class="idea-body">
+            <h4>문제</h4>
+            <ul>
+              <li>AI 사용을 금지하기보다 어떻게 사용했는지 평가하는 기준이 필요합니다.</li>
+              <li>팀플 무임승차, 인용 누락, 묻지 못한 질문, 정책 영향은 기존 방식으로 파악하기 어렵습니다.</li>
+            </ul>
+            <h4>주요 모듈</h4>
+            <ul>
+              <li>팀플 코파일럿: 회의록, 액션 아이템, 기여도 신호</li>
+              <li>AI 사용 가시화 평가: 프롬프트와 수정 과정 평가</li>
+              <li>claim 검증: 보고서 주장과 출처 대조</li>
+              <li>묻지 못한 질문 큐레이터: 익명 질문 클러스터링</li>
+              <li>정책 시뮬레이터: 정책 변화의 학생군별 영향 예측</li>
+            </ul>
+            <h4>MVP</h4>
+            <ul>
+              <li>묻지 못한 질문 큐레이터 또는 AI 사용 가시화 평가 중 하나로 축소 권장</li>
+              <li>프라이버시와 공정성 원칙을 발표에 명확히 포함</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">평가 혁신</span>
+              <span class="pill">협업</span>
+              <span class="pill">정책</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="recommend">
+      <div class="section-title">
+        <h2>최종 후보 추천</h2>
+        <p>공모전 완성도 기준으로는 메인 아이디어를 하나로 좁히고, 나머지를 확장 가능성으로 보여주는 전략이 가장 안정적입니다.</p>
+      </div>
+      <div class="recommend">
+        <div class="rank">
+          <b>1순위: 소크라테스형 AI TA</b>
+          <p>학습 지원·AI 활용 교육 분야와 직접 맞고, 공익성·차별성·구현 가능성의 균형이 가장 좋습니다.</p>
+        </div>
+        <div class="rank">
+          <b>2순위: 수강·전공 설계 에이전트</b>
+          <p>학생 체감도가 높고 서강의 자기설계전공, 융합 교육 이미지와 연결하기 좋습니다.</p>
+        </div>
+        <div class="rank">
+          <b>3순위: 서강 규정 GPT</b>
+          <p>행정 효율 개선 효과가 명확합니다. 근거 인용과 직원용 모드를 강조해야 차별화됩니다.</p>
+        </div>
+        <div class="rank">
+          <b>4순위: 평가·협업 인사이트</b>
+          <p>시대성과 차별성은 강하지만 평가 공정성, 프라이버시 설계가 발표의 핵심 리스크입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-title">
+        <h2>추천 제출안과 확장 로드맵</h2>
+        <p>메인 제출명은 "Sogang Socratic AI TA: 정답이 아니라 질문을 주는 AI 조교"를 추천합니다.</p>
+      </div>
+      <div class="roadmap">
+        <div class="step">
+          <h3>Python 기초 과목 MVP</h3>
+          <p>오류 메시지 해석, 단계형 힌트, 공통 오류 리포트로 가장 작은 실사용 단위를 만듭니다.</p>
+        </div>
+        <div class="step">
+          <h3>Reading Pace 연동</h3>
+          <p>예습·복습 계획, 이해도 퀴즈, 개념 보충 자료를 연결해 학습 루프를 완성합니다.</p>
+        </div>
+        <div class="step">
+          <h3>AI 사용 가시화 평가</h3>
+          <p>프롬프트 로그와 수정 과정을 통해 단순 복붙이 아닌 비판적 AI 활용을 평가합니다.</p>
+        </div>
+        <div class="step">
+          <h3>전교 과목 확장</h3>
+          <p>교수자가 과목별 AI 조교 정책과 자료를 설정할 수 있는 템플릿으로 확장합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="section-title">
+        <h2>향후 팀 논의 체크리스트</h2>
+        <p>팀원 의견을 받을 때 아래 질문에 답을 채우면 다음 버전 문서 업데이트가 빨라집니다.</p>
+      </div>
+      <ul class="checklist">
+        <li>최종 제출 분야는 무엇으로 할 것인가?</li>
+        <li>7개 중 하나를 단독 제출할 것인가, 메인과 확장 로드맵으로 묶을 것인가?</li>
+        <li>실제 데모는 어떤 데이터로 만들 것인가?</li>
+        <li>서강 특화 요소를 어떤 자료나 시스템과 연결해 보여줄 것인가?</li>
+        <li>프라이버시, 평가 공정성, AI 오남용 방지 정책은 어떻게 설명할 것인가?</li>
+        <li>발표 첫 30초에 심사위원을 붙잡을 Hook은 무엇인가?</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>팀 공유용 요약 문구</h2>
+        <p>회의나 발표 자료 초안에 그대로 넣을 수 있는 압축 문장입니다.</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>내용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>추천 제출명</td>
+            <td>Sogang Socratic AI TA: 정답이 아니라 질문을 주는 AI 조교</td>
+          </tr>
+          <tr>
+            <td>한 줄 요약</td>
+            <td>강의자료와 과제 가이드라인을 기반으로 학생에게 정답 대신 단계별 힌트와 유도 질문을 제공해, 자기주도 학습과 윤리적 AI 활용을 돕는 학습 지원 에이전트.</td>
+          </tr>
+          <tr>
+            <td>슬로건</td>
+            <td>AI가 대신 풀어주는 과제가 아니라, AI와 함께 이해해가는 학습.</td>
+          </tr>
+          <tr>
+            <td>핵심 차별점</td>
+            <td>일반 챗봇처럼 답을 주는 것이 아니라, 교수자가 설정한 과제 정책 안에서 학생이 스스로 원인을 찾도록 유도합니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="footer">
+      이 문서는 팀원 의견을 반영해 계속 업데이트하는 초안입니다. 자세한 원본은 같은 폴더의 Markdown 문서에서 관리하면 좋습니다.
+    </p>
+  </main>
+</body>
+</html>

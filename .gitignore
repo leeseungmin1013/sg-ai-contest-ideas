@@ -1,0 +1,4 @@
+*.log
+server.err.log
+localtunnel.err.log
+.vercel/
