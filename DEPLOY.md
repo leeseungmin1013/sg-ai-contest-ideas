@@ -2,6 +2,12 @@
 
 이 폴더는 정적 HTML 사이트입니다. `index.html`이 메인 페이지이므로 Vercel, Netlify, GitHub Pages 어디에 올려도 바로 열립니다.
 
+## 현재 연결된 주소
+
+- GitHub 저장소: https://github.com/leeseungmin1013/sg-ai-contest-ideas
+- GitHub Pages: https://leeseungmin1013.github.io/sg-ai-contest-ideas/
+- Vercel Import: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleeseungmin1013%2Fsg-ai-contest-ideas
+
 ## 추천: Vercel
 
 ### 1. GitHub 저장소로 연결하는 방법
@@ -43,4 +49,3 @@ npx vercel --prod
 1. 원본 내용은 `sg_ai_contest_ideas.md`에서 관리합니다.
 2. 공유용 화면은 `index.html`과 `sg_ai_contest_ideas.html`을 업데이트합니다.
 3. GitHub에 push하면 Vercel 배포 링크가 자동 업데이트되도록 만듭니다.
-
